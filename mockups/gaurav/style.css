@@ -1,0 +1,260 @@
+/* ================================================================= */
+/* Global Variables */
+/* ================================================================= */
+
+:root {
+    --default-nav-bg-color: #f2f2f2;
+    --default-nav-active-bg-color: #ccc;
+    --default-nav-color: #333;
+    --default-nav-hover-color: #333;
+    --base-font-family: Arial, sans-serif;
+    --sidebar-width: 15rem;
+}
+
+/* ================================================================= */
+/* Global Config */
+/* ================================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--base-font-family);
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Elements Base Config */
+aside {
+    height: 100%;
+    width: var(--sidebar-width);
+}
+
+main,
+.container {
+    width: 100%;
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    width: 100%;
+}
+
+aside,
+header[fixed] nav {
+    position: fixed;
+    top: 0;
+}
+
+footer {
+    width: 100%;
+}
+
+nav,
+aside,
+footer {
+    background-color: var(--default-nav-bg-color);
+    color: var(--default-nav-color);
+}
+
+input[type="search"] {
+    padding: 0.5rem;
+}
+
+/* ================================================================= */
+/* Attribute Config */
+/* ================================================================= */
+
+[xs],
+[sm],
+[md],
+[lg] {
+    display: none;
+}
+
+aside:not([xs]):not([sm]):not([md]):not([lg]):not([hidden]) ~ footer,
+aside:not([xs]):not([sm]):not([md]):not([lg]):not([hidden]) + main {
+    max-width: 100%;
+    padding-left: calc(var(--sidebar-width) + 15px);
+}
+
+@media(max-width: 767px) {
+    [xs] {
+        display: block !important;
+    }
+
+    nav button[xs] {
+        display: inline-block !important;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 991px) {
+    [sm] {
+        display: block !important;
+    }
+
+    nav button[sm] {
+        display: inline-block !important;
+    }
+
+    aside[sm] ~ footer,
+    aside[sm] + main {
+        max-width: 100%;
+        padding-left: calc(var(--sidebar-width) + 15px);
+    }
+}
+
+@media(min-width: 992px) and (max-width: 1199px) {
+    [md] {
+        display: block !important;
+    }
+
+    nav button[md] {
+        display: inline-block !important;
+    }
+
+    aside[md] ~ footer,
+    aside[md] + main {
+        max-width: 100%;
+        padding-left: calc(var(--sidebar-width) + 15px);
+    }
+}
+@media(min-width: 1200px) {
+    [lg] {
+        display: block !important;
+    }
+
+    button[ml] {
+        display: inline-block !important;
+    }
+
+    aside[lg] ~ footer,
+    aside[lg] + main {
+        max-width: 100%;
+        padding-left: calc(var(--sidebar-width) + 15px);
+    }
+}
+
+/* ================================================================= */
+/* Nested Config */
+/* ================================================================= */
+
+aside > nav > ul,
+header nav ul {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+}
+
+header nav ul {
+    display: inline-block;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+aside > nav > ul > li > a {
+    width: 100%;
+    display: block;
+    padding: 0.5rem 2rem;
+}
+
+header nav ul > li {
+    display: inline-block;
+}
+
+header nav ul > li > a {
+    padding: 1rem 0.5rem;
+}
+
+aside > nav > ul > li > a,
+aside > nav > ul > li > a:visited,
+header nav ul > li > a,
+header nav ul > li > a:visited {
+    text-decoration: none;
+    color: var(--default-nav-color);
+}
+
+aside > nav > ul > li > a:hover,
+aside > nav > ul > li > a:active,
+header nav ul > li > a:hover,
+header nav ul > li > a:active {
+    background-color: var(--default-nav-active-bg-color);
+    text-decoration: none;
+    
+}
+
+header nav button[toggle] {
+    background-color: transparent;
+    padding: 1rem;
+    outline: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    user-select: none;
+}
+
+header nav button[toggle]:hover {
+    color: var(--default-nav-hover-color);
+}
+
+header form,
+header nav form {
+    display: inline-block;
+}
+
+header nav form > input[type="search"] {
+    margin: 0.4rem 0;
+}
+aside > form > input[type="search"] {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+}
+header nav > brand {
+    display: inline-block;
+    padding: 0.87rem 1rem;
+}
+aside > brand,
+header nav brand {
+    display: inline-block;
+    font-size: 1.25rem;
+}
+header brand {
+    display: inline-block;
+    font-size: 3rem;
+}
+
+aside > brand {
+    display: block;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+/* ================================================================= */
+/* Adjecent Config */
+/* ================================================================= */
+
+header nav ul + form,
+header nav form + ul {
+    float: right;
+    margin-right: 1rem;
+}
+header nav form + ul {
+    padding: 1rem 0.5rem;
+}
+
+header[fixed] ~ main {
+    margin-top: 70px;
+}
+
+header[fixed] ~ aside {
+    margin-top: 50px;
+}
